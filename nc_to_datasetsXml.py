@@ -18,7 +18,7 @@ env = Environment(loader=FileSystemLoader('templates'))
 
 # generate random 12 digit string for DatasetID
 rstr = uuid.uuid4().hex[0:12]
-rstr=('{}_{}_{}'.format(rstr[:4],rstr[4:8],rstr[8:]))
+rstr = ('{}_{}_{}'.format(rstr[:4],rstr[4:8],rstr[8:]))
 print(rstr)
 
 
@@ -32,12 +32,12 @@ nc = netCDF4.Dataset(ncfile)
 # In[4]:
 
 # information specific to dataset
-datasetID='ooi_'+rstr
-reloadEveryNMinutes='10'
-fileDir='/usgs/data2/rsignell/data/ooi'
-fileNameRegex='.*superv\.nc'
-subsetVariables='feature_type_instance, latitude, longitude, platform'
-infoUrl='http://ceoas.oregonstate.edu/ooi'
+datasetID = 'ooi_'+rstr
+reloadEveryNMinutes = '10'
+fileDir = '/usgs/data2/rsignell/data/ooi'
+fileNameRegex = '.*superv\.nc'
+subsetVariables = 'feature_type_instance, latitude, longitude, platform'
+infoUrl = 'http://ceoas.oregonstate.edu/ooi'
 cdm_timeseries_variables = subsetVariables
 keywords = ','.join(list(nc.variables))
 
@@ -88,21 +88,21 @@ dvars[tvar.name]={'destinationName':'time',
             'colorBarMaximum':None}
 
 xvar = nc.get_variables_by_attributes(axis='X')[0]
-dvars[xvar.name]={'destinationName':'longitude', 
+dvars[xvar.name] = {'destinationName':'longitude', 
             'ioos_category':'Location', 
             'dataType':dmap[xvar.dtype.name], 
             'colorBarMinimum':-180.0, 
             'colorBarMaximum':180.0}
 
 yvar = nc.get_variables_by_attributes(axis='Y')[0]
-dvars[yvar.name]={'destinationName':'latitude', 
+dvars[yvar.name] = {'destinationName':'latitude', 
             'ioos_category':'Location', 
             'dataType':dmap[yvar.dtype.name], 
             'colorBarMinimum':-90.0, 
             'colorBarMaximum':90.0}
 
 zvar = nc.get_variables_by_attributes(axis='Z')[0]
-dvars[zvar.name]={'destinationName':'altitude', 
+dvars[zvar.name] = {'destinationName':'altitude', 
             'ioos_category':'Location', 
             'dataType':dmap[zvar.dtype.name], 
             'colorBarMinimum':-8000.0, 
