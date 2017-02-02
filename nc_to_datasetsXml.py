@@ -24,8 +24,8 @@ print(rstr)
 
 # In[3]:
 
+# open a NetCDF CF-1.6+, DSG featureType=timeSeries file
 ncfile = '20170129.superv.nc'
-#ncfile = 'joe_example.nc'
 nc = netCDF4.Dataset(ncfile)
 
 
