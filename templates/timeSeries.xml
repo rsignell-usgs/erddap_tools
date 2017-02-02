@@ -27,14 +27,14 @@
     {% for key,value in dvars.items() %}
     <dataVariable>
         <sourceName>{{ key }}</sourceName>
-        <destinationName>{{ value[0] }}</destinationName>
-        <dataType>{{ value[2] }}</dataType>
+        <destinationName>{{ value['destinationName'] }}</destinationName>
+        <dataType>{{ value['dataType'] }}</dataType>
         <addAttributes>
-            {% if ((value[3] != None) and (value[4]>value[3])) %} 
-            <att name="colorBarMaximum" type="double">{{ value[4] }}</att>
-            <att name="colorBarMinimum" type="double">{{ value[3] }}</att>
+            {% if ((value['colorBarMaximum'] != None) and (value['colorBarMaximum']>value['colorBarMinimum'])) %} 
+            <att name="colorBarMaximum" type="double">{{ value['colorBarMaximum'] }}</att>
+            <att name="colorBarMinimum" type="double">{{ value['colorBarMinimum'] }}</att>
             {% endif %}
-            <att name="ioos_category">{{ value[1] }}</att>
+            <att name="ioos_category">{{ value['ioos_category'] }}</att>
         </addAttributes>
     </dataVariable>
     {% endfor %}
